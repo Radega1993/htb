@@ -112,7 +112,7 @@ Verificamos los permisos con el comando:
 
 ```bash
 sudo -l
-``` 
+```
 
 **Salida:**
 
@@ -123,7 +123,7 @@ Matching Defaults entries for martin on localhost:
 
 User martin may run the following commands on localhost:
     (ALL : ALL) NOPASSWD: /usr/bin/backy.sh
-``` 
+```
 
 Esto indica que el usuario **martin** puede ejecutar sin contraseña el script `/usr/bin/backy.sh`.
 
