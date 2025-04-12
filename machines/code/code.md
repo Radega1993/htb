@@ -2,7 +2,7 @@
 
 Este walkthrough detalla el proceso completo para explotar la máquina "code" de HackTheBox, desde la enumeración inicial hasta la obtención de las dos flags (user y root). Se explica el uso del editor Python vulnerable para interactuar con el modelo SQLAlchemy, la extracción de datos, el crackeo de hashes y la escalada de privilegios mediante un script de backup.
 
-```
+---
 
 ## 1. Enumeración Inicial
 
@@ -22,7 +22,7 @@ PORT     STATE SERVICE
 
 Se detecta que el puerto **5000** responde y muestra un servicio web que, al acceder, permite ejecutar código en Python.
 
-```
+---
 
 ## 2. Acceso al Editor Python Vulnerable
 
@@ -36,7 +36,7 @@ se muestra un editor (basado en Ace Editor) para escribir y ejecutar código Pyt
 
 Esto indica que el código se ejecuta en el espacio global de la aplicación (Flask) y que hay objetos internos accesibles.
 
-```
+---
 
 ## 3. Exploración del Namespace y Obtención del Modelo User
 
@@ -75,7 +75,7 @@ martin 3de6f30c4a09c27fc71932bfc68474be
 radega e89674615091bda1a423cf909aeef7e3
 ``` 
 
-```
+---
 
 ## 4. Crackeo de Hashes de Contraseña
 
@@ -104,7 +104,7 @@ hashcat -m 0 -a 0 hashes.txt /usr/share/wordlists/rockyou.txt
 3de6f30c4a09c27fc71932bfc68474be:nafeelswordsmaster
 ``` 
 
-```
+---
 
 ## 5. Escalada de Privilegios – Obtención de la User Flag
 
@@ -176,7 +176,7 @@ tar -xvjf code_home_app-production_2025_April.tar.bz2
 
 Dentro del backup se encuentra el archivo `home/app-production/user.txt` que contiene la **user flag**.
 
-```
+---
 
 ## 6. Escalada de Privilegios – Obtención de la Root Flag
 
@@ -238,7 +238,7 @@ tar -xvjf code_var_.._root_2025_April.tar.bz2
 
 Dentro del contenido extraído se encuentra la **root flag**.
 
-```
+---
 
 ## 7. Conclusiones
 
@@ -268,6 +268,6 @@ Este walkthrough mostró los siguientes pasos:
 > **Advertencia:**  
 > Este ejercicio se realizó en un entorno controlado (CTF). Utiliza estos conocimientos únicamente de forma ética y legal.
 
-```
+---
 
 
