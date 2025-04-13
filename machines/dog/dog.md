@@ -116,7 +116,7 @@ User johncusack may run the following commands on dog: (ALL : ALL) /usr/local/bi
 
 El usuario **johncusack** puede ejecutar sin contraseña el comando **/usr/local/bin/bee**, una utilidad para controlar Backdrop desde línea de comandos (ver [Bee en Backdrop CMS](https://backdropcms.org/project/bee)).
 
-El comando `bee ev` permite evaluar código PHP. Se prueba lo siguiente para ejecutar comandos:
+El comando `bee ev` permite evaluar código PHP. Se prueba lo siguiente para ejecutar comandos desde la carpeta donde esta el cms instalado en este cado /var/www/html:
   
 ```bash
 sudo /usr/local/bin/bee ev "system('ls')"
